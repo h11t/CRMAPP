@@ -4,4 +4,9 @@
     <TargetFramework>netcoreapp2.2</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\IsmekCrm.Dal\IsmekCrm.Dal.csproj" />
+    <ProjectReference Include="..\IsmekCrm.Entity\IsmekCrm.Entity.csproj" />
+  </ItemGroup>
+
 </Project>
