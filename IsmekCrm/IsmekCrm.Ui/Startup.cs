@@ -2,10 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using IsmekCrm.Bll.Abstract;
+using IsmekCrm.Bll.Concrete;
+using IsmekCrm.Dal.Abstract;
+using IsmekCrm.Dal.Concrete;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -30,13 +35,26 @@ namespace IsmekCrm.Ui
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddScoped<IUserService, UserManager>();
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IStatusService, StatusManager>();
+            services.AddScoped<IStatusRepository, StatusRepository>();
+            services.AddScoped<ITaskService, TaskManager>();
+            services.AddScoped<ITaskRepository, TaskRepository>();
+            services.AddDbContext<IsmekCrmContext>(options => options.UseSqlServer(Configuration.GetConnectionString("IsmekConn")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            using (var serviceScope=app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
+            {
+                using (var context=serviceScope.ServiceProvider.GetService<IsmekCrmContext>())
+                {
+                    context.Database.Migrate();
+                }
+            }
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

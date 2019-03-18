@@ -1,10 +1,8 @@
 ﻿using IsmekCrm.Bll.Abstract;
 using IsmekCrm.Dal.Abstract;
 using IsmekCrm.Entity.Concrete;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace IsmekCrm.Bll.Concrete
 {

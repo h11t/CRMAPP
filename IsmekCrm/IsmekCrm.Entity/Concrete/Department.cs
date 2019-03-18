@@ -7,10 +7,7 @@ namespace IsmekCrm.Entity.Concrete
 {
   public  class Department:Base
     {
-        public Department()
-        {
-            Users = new HashSet<User>();
-        }
-        public virtual ICollection<User> Users { get; set; }
+        
+        public  ICollection<UserDepartment> Users { get; set; }
     }
 }

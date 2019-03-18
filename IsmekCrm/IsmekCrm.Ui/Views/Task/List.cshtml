@@ -1,0 +1,47 @@
+﻿@model IsmekCrm.Ui.Models.TaskViewModel
+
+@{
+    ViewData["Title"] = "List";
+}
+
+<h1>List</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>PostDate</th>
+            <th>DueDate</th>
+            <th>StatusId</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.TaskList) {
+        <tr>
+            <td>@item.Title</td>
+            <td>@item.Description</td>
+            <td>@item.PostDate</td>
+            <td>@item.DueDate</td>
+            <td>@item.StatusId</td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.Id}) |
+                @Html.ActionLink("Details", "Details", new {  id=item.Id}) |
+                <a href="#" onclick="DeleteTask(@item.Id,'@item.Title')">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<script>
+    function DeleteTask(id, title) {
+        var isOkey = confirm("Do you want to delete task : " + title);
+        if (isOkey) {
+            location.href = "/Task/Delete/" + id;
+        }
+    }
+</script>

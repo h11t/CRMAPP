@@ -8,11 +8,8 @@ namespace IsmekCrm.Entity.Concrete
 {
   public  class Role:Base
     {
-        public Role()
-        {
-            Users = new HashSet<User>();
-        }
-        public virtual ICollection<User> Users { get; set; }
+        
+        public  ICollection<UserRole> Users { get; set; }
 
     }
 }

@@ -9,10 +9,7 @@ namespace IsmekCrm.Entity.Concrete
 {
    public class Task:IEntity
     {
-        public Task()
-        {
-            Users = new HashSet<User>();
-        }
+       
         public int Id { get; set; }
         [DataType(DataType.Date)]
         public DateTime PostDate { get; set; }
@@ -25,7 +22,7 @@ namespace IsmekCrm.Entity.Concrete
         [DataType(DataType.Date)]
         public DateTime DueDate { get; set; }
 
-        public virtual ICollection<User> Users { get; set; }
+        public  ICollection<UserTask> Users { get; set; }
         [ForeignKey("StatusId")]
         public virtual Status Statuss { get; set; }
 
