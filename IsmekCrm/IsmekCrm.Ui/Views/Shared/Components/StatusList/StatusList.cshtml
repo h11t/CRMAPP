@@ -1,0 +1,12 @@
+﻿
+@model IsmekCrm.Ui.Models.StatusViewModel
+
+
+<div class="list-group">
+    @{ 
+        foreach (var item in Model.StatusList)
+        {
+            <div class="list-group-item"><a href="/Status/Index/@item.Id">@item.Name</a></div>
+        }
+    }
+</div>

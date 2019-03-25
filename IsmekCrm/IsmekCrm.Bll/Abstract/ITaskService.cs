@@ -1,5 +1,7 @@
 ﻿using IsmekCrm.Entity.Concrete;
+using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 
 namespace IsmekCrm.Bll.Abstract
 {
@@ -10,5 +12,7 @@ namespace IsmekCrm.Bll.Abstract
         void Delete(int id);
         Task GetById(int id);
         List<Task> GetAll();
+        List<Task> GetByFilter(Expression<Func<Task, bool>> filter);
+
     }
 }

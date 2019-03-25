@@ -1,4 +1,4 @@
-﻿@model IsmekCrm.Entity.Concrete.Status
+﻿@model IsmekCrm.Entity.Concrete.Department
 
 @{
     ViewData["Title"] = "Add";
@@ -6,23 +6,19 @@
 
 <h1>Add</h1>
 
-@{ 
+<h4>Department</h4>
+<hr />
+@{
     if (ViewBag.Message != null)
     {
-        <div class="alert alert-info" >@ViewBag.Message</div>
-    }
-    if(ViewData["Alert"]!=null)
-    {
-        <h3>@ViewData["Alert"]</h3>
+        <div class="alert alert-info">@ViewBag.Message</div>
     }
 }
-<h4>Status</h4>
-<hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Add">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-           
+            
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
                 <input asp-for="Name" class="form-control" />
@@ -39,6 +35,3 @@
     <a asp-action="Index">Back to List</a>
 </div>
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}

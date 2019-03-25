@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using IsmekCrm.Entity.Concrete;
+using System.Collections.Generic;
 
 namespace IsmekCrm.Ui.Models
 {
@@ -6,5 +7,7 @@ namespace IsmekCrm.Ui.Models
     {
         public List<IsmekCrm.Entity.Concrete.Task> TaskList { get; set; }
         public IsmekCrm.Entity.Concrete.Task Task { get; set; }
+        public List<Status> StatusList { get; set; }
+
     }
 }

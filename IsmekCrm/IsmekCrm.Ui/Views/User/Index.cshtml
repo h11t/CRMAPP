@@ -1,0 +1,22 @@
+﻿
+
+@model IsmekCrm.Ui.Models.UserViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+
+@await Component.InvokeAsync("DepartmentList")
+
+<div class="row">
+    @{
+        foreach (var item in Model.ListUser)
+        {
+            <div class="list-group-item">@item.Username</div>
+            <div class="list-group-item">@item.Id </div><br />
+        }
+     }
+</div>

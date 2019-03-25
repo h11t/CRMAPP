@@ -1,8 +1,10 @@
 ﻿using IsmekCrm.Bll.Abstract;
 using IsmekCrm.Dal.Abstract;
 using IsmekCrm.Entity.Concrete;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 
 namespace IsmekCrm.Bll.Concrete
 {
@@ -27,6 +29,11 @@ namespace IsmekCrm.Bll.Concrete
         public List<User> GetAll()
         {
             return _userService.GetList().ToList();
+        }
+
+        public List<User> GetByFilter(Expression<Func<User, bool>> filter)
+        {
+            return _userService.GetList(filter).ToList();
         }
 
         public User GetById(int id)

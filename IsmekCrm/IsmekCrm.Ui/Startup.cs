@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using IsmekCrm.Bll.Abstract;
@@ -13,6 +14,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
 
 namespace IsmekCrm.Ui
 {
@@ -36,12 +38,15 @@ namespace IsmekCrm.Ui
             });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            
             services.AddScoped<IUserService, UserManager>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IStatusService, StatusManager>();
             services.AddScoped<IStatusRepository, StatusRepository>();
             services.AddScoped<ITaskService, TaskManager>();
             services.AddScoped<ITaskRepository, TaskRepository>();
+            services.AddScoped<IDepartmentService, DepartmentManager>();
+            services.AddScoped<IDepartmentRepository, DepartmentRepository>();
             services.AddDbContext<IsmekCrmContext>(options => options.UseSqlServer(Configuration.GetConnectionString("IsmekConn")));
         }
 
@@ -64,7 +69,15 @@ namespace IsmekCrm.Ui
                 app.UseExceptionHandler("/Home/Error");
             }
 
-            app.UseStaticFiles();
+    
+
+            app.UseFileServer(new FileServerOptions
+            {
+                FileProvider=new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(),@"node_modules")),
+                RequestPath=new PathString("/npm"),
+                EnableDirectoryBrowsing=true
+            });
+                    app.UseStaticFiles();
             app.UseCookiePolicy();
 
             app.UseMvc(routes =>

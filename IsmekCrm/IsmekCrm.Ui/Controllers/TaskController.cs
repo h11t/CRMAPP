@@ -11,9 +11,11 @@ namespace IsmekCrm.Ui.Controllers
     public class TaskController : Controller
     {
         ITaskService taskService;
-        public TaskController(ITaskService _taskService)
+        IStatusService statusService;
+        public TaskController(ITaskService _taskService, IStatusService _statusService)
         {
             taskService = _taskService;
+            statusService = _statusService;
         }
 
         public IActionResult Index()
@@ -23,22 +25,24 @@ namespace IsmekCrm.Ui.Controllers
 
         public IActionResult Add()
         {
-            return View();
+           var list= statusService.GetAll();
+            return View(new TaskViewModel {  StatusList=list, Task=new Task { } });
         }
 
         [HttpPost]
-        public IActionResult Add(IsmekCrm.Entity.Concrete.Task model)
+        public IActionResult Add(TaskViewModel model)
         {
             if (ModelState.IsValid)
             {
-                taskService.Add(model);
+                
+                taskService.Add(model.Task);
                 ViewBag.Message = "Task is added successfully. Thanks.";
                 return View();
             }
             else
             {
                 ViewBag.Message = "Opss! There are some validation errors. Please check up";
-                return View(model);
+                return View(model.Task);
             }
         }
 

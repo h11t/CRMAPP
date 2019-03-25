@@ -1,0 +1,26 @@
+﻿@model IsmekCrm.Ui.Models.TaskViewModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+<link href="~/npm/bootstrap/dist/css/bootstrap-theme.css" rel="stylesheet" />
+
+<div class="row">
+    <div class="col-md-4">
+        @*list status*@
+        @*@Html.Partial("StatusListPartial")*@
+        @await Component.InvokeAsync("StatusList")
+    </div>
+    <div class="col-md-8">
+        @*tasks list*@
+        <div class="list-group">
+            @{
+                foreach (var item in Model.TaskList)
+                {
+                    <div class="list-group-item">@item.Title - @item.Description</div>
+                }
+            }
+        </div>
+    </div>
+</div>

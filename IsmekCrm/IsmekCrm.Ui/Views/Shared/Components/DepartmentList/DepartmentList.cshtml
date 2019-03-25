@@ -1,0 +1,13 @@
+﻿
+@model IsmekCrm.Ui.Models.DepartmentViewModel
+
+
+<div class="list-group">
+    @{ 
+        foreach (var item in Model.DepartmentList)
+        {
+            <div class="list-group-item"><a href="/User/Index/@item.Id">@item.Name</a></div>
+
+        }
+    }
+</div>
