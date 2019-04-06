@@ -38,7 +38,7 @@ namespace IsmekCrm.Ui
             });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-            
+
             services.AddScoped<IUserService, UserManager>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IStatusService, StatusManager>();
@@ -48,14 +48,15 @@ namespace IsmekCrm.Ui
             services.AddScoped<IDepartmentService, DepartmentManager>();
             services.AddScoped<IDepartmentRepository, DepartmentRepository>();
             services.AddDbContext<IsmekCrmContext>(options => options.UseSqlServer(Configuration.GetConnectionString("IsmekConn")));
+            services.AddSession();//tempdata nll gelmemesi için middleware çağrılır ve session servisleri aktif edilir.
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            using (var serviceScope=app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
+            using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
             {
-                using (var context=serviceScope.ServiceProvider.GetService<IsmekCrmContext>())
+                using (var context = serviceScope.ServiceProvider.GetService<IsmekCrmContext>())
                 {
                     context.Database.Migrate();
                 }
@@ -69,17 +70,25 @@ namespace IsmekCrm.Ui
                 app.UseExceptionHandler("/Home/Error");
             }
 
-    
+
 
             app.UseFileServer(new FileServerOptions
             {
-                FileProvider=new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(),@"node_modules")),
-                RequestPath=new PathString("/npm"),
-                EnableDirectoryBrowsing=true
+                FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @"node_modules")),
+                RequestPath = new PathString("/npm"),
+                EnableDirectoryBrowsing = true
             });
-                    app.UseStaticFiles();
+            app.UseStaticFiles();
+            app.UseSession();
             app.UseCookiePolicy();
 
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                  name: "areas",
+                  template: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+                );
+            });
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

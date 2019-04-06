@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2016
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IsmekCrm.Core", "IsmekCrm.Core\IsmekCrm.Core.csproj", "{D6CB5A7B-F99F-44F4-9B5C-C00FEA0DFD6F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IsmekCrm.Core", "IsmekCrm.Core\IsmekCrm.Core.csproj", "{D6CB5A7B-F99F-44F4-9B5C-C00FEA0DFD6F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IsmekCrm.Entity", "IsmekCrm.Entity\IsmekCrm.Entity.csproj", "{DDCD0958-3584-43A5-9417-04E83F1E9875}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IsmekCrm.Entity", "IsmekCrm.Entity\IsmekCrm.Entity.csproj", "{DDCD0958-3584-43A5-9417-04E83F1E9875}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IsmekCrm.Dal", "IsmekCrm.Dal\IsmekCrm.Dal.csproj", "{F813A386-9BBA-446C-BA0F-D64EA9D3E902}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IsmekCrm.Dal", "IsmekCrm.Dal\IsmekCrm.Dal.csproj", "{F813A386-9BBA-446C-BA0F-D64EA9D3E902}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IsmekCrm.Bll", "IsmekCrm.Bll\IsmekCrm.Bll.csproj", "{ABBE860A-710F-446A-B808-EA53D5FFF28D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IsmekCrm.Bll", "IsmekCrm.Bll\IsmekCrm.Bll.csproj", "{ABBE860A-710F-446A-B808-EA53D5FFF28D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IsmekCrm.Ui", "IsmekCrm.Ui\IsmekCrm.Ui.csproj", "{6DF226CE-08F2-476A-B731-E913898355A6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IsmekCrm.Ui", "IsmekCrm.Ui\IsmekCrm.Ui.csproj", "{6DF226CE-08F2-476A-B731-E913898355A6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

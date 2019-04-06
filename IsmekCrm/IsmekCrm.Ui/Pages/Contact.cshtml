@@ -1,0 +1,36 @@
+﻿@page
+@addTagHelper *,Microsoft.AspNetCore.Mvc.TagHelpers
+@using IsmekCrm.Ui.Pages
+@model ContactModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+ }
+@if(TempData["Data"]!=null)
+{
+    <div class="alert-info">@TempData["Data"].ToString()</div>
+}
+<form method="post">
+    <div class="container">
+        <div class="form-group">
+            <label>NAME</label>
+            <input class="form-control" asp-for="@Model.ContactMe.Name" />
+        </div>
+        <div class="form-group">
+            <label>SURNAME</label>
+            <input class="form-control" asp-for="@Model.ContactMe.Surname" />
+        </div>
+        <div class="form-group">
+            <label>MAIL</label>
+            <input class="form-control" asp-for="@Model.ContactMe.Mail" />
+        </div>
+        <div class="form-group">
+            <label>PHONE</label>
+            <input class="form-control" asp-for="@Model.ContactMe.Phone" />
+        </div>
+        <div class="form-group">
+            <label>DESCRIPTION</label>
+            <textarea class="form-control" asp-for="@Model.ContactMe.Description" ></textarea>
+        </div>
+        <input type="submit" class="btn btn-info" value="Contact Us" />
+    </div>
+</form>

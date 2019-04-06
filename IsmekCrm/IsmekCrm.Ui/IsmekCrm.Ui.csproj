@@ -19,6 +19,9 @@
     <Content Include="node_modules\bootstrap\grunt\configBridge.json" />
     <Content Include="node_modules\bootstrap\grunt\npm-shrinkwrap.json" />
     <Content Include="node_modules\bootstrap\package.json" />
+    <Content Include="node_modules\jquery-validate\package.json" />
+    <Content Include="node_modules\jquery-validation-unobtrusive\LICENSE.txt" />
+    <Content Include="node_modules\jquery-validation-unobtrusive\package.json" />
     <Content Include="node_modules\jquery-validation\package.json" />
     <Content Include="node_modules\jquery\AUTHORS.txt" />
     <Content Include="node_modules\jquery\bower.json" />
@@ -134,6 +137,10 @@
     <None Include="node_modules\bootstrap\less\wells.less" />
     <None Include="node_modules\bootstrap\LICENSE" />
     <None Include="node_modules\bootstrap\README.md" />
+    <None Include="node_modules\jquery-validate\README.md" />
+    <None Include="node_modules\jquery-validation-unobtrusive\dist\jquery.validate.unobtrusive.js" />
+    <None Include="node_modules\jquery-validation-unobtrusive\dist\jquery.validate.unobtrusive.min.js" />
+    <None Include="node_modules\jquery-validation-unobtrusive\README.md" />
     <None Include="node_modules\jquery-validation\changelog.md" />
     <None Include="node_modules\jquery-validation\dist\additional-methods.js" />
     <None Include="node_modules\jquery-validation\dist\additional-methods.min.js" />
@@ -394,6 +401,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\IsmekCrm.Bll\IsmekCrm.Bll.csproj" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Areas\Admin\Models\" />
   </ItemGroup>
 
 </Project>
