@@ -18,6 +18,9 @@ namespace IsmekCrm.Entity.Concrete
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
+        //[Compare("Password",ErrorMessage ="Passwords does not match")]
+        //[NotMapped] db de oluşturulmamasını sağlıuyor.
+        //public string PasswordConfirm { get; set; }
 
         public int UserStatusId { get; set; }
 

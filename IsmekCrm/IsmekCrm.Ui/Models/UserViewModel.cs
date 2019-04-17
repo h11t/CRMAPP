@@ -9,5 +9,6 @@ namespace IsmekCrm.Ui.Models
     public class UserViewModel
     {
         public List<User> ListUser { get; set; }
+        public User CurrentUser { get; set; }
     }
 }

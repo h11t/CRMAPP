@@ -41,6 +41,12 @@ namespace IsmekCrm.Bll.Concrete
             return _userService.Get(x => x.Id == id);
         }
 
+        public bool Login(string userName, string password)
+        {
+           var user= _userService.Get(x => x.Username == userName && x.Password == password);
+            return user == null ? false : true;
+        }
+
         public void Update(User entity)
         {
             _userService.Update(entity);

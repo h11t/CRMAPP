@@ -13,5 +13,6 @@ namespace IsmekCrm.Bll.Abstract
         User GetById(int id);
         List<User> GetAll();
         List<User> GetByFilter(Expression<Func<User,bool>> filter);
+        bool Login(string userName, string password);
     }
 }

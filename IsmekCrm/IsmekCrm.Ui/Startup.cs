@@ -33,7 +33,7 @@ namespace IsmekCrm.Ui
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
-                options.CheckConsentNeeded = context => true;
+                options.CheckConsentNeeded = context => false;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
@@ -47,6 +47,7 @@ namespace IsmekCrm.Ui
             services.AddScoped<ITaskRepository, TaskRepository>();
             services.AddScoped<IDepartmentService, DepartmentManager>();
             services.AddScoped<IDepartmentRepository, DepartmentRepository>();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddDbContext<IsmekCrmContext>(options => options.UseSqlServer(Configuration.GetConnectionString("IsmekConn")));
             services.AddSession();//tempdata nll gelmemesi için middleware çağrılır ve session servisleri aktif edilir.
         }
@@ -72,12 +73,12 @@ namespace IsmekCrm.Ui
 
 
 
-            app.UseFileServer(new FileServerOptions
-            {
-                FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @"node_modules")),
-                RequestPath = new PathString("/npm"),
-                EnableDirectoryBrowsing = true
-            });
+            //app.UseFileServer(new FileServerOptions
+            //{
+            //    FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @"node_modules")),
+            //    RequestPath = new PathString("/npm"),
+            //    EnableDirectoryBrowsing = true
+            //});
             app.UseStaticFiles();
             app.UseSession();
             app.UseCookiePolicy();
